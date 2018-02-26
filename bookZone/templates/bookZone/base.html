@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BookZone{% block title %} | Welcome{% endblock %}</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'bookZone/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'bookZone/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bookZone/main.css' %}">
+    <link rel="stylesheet" href="{% static 'bookZone/3-col-portfolio.css' %}" >
+  </head>
+  <body>
+  <header>
+
+  <nav class="navbar open" id="topNav">
+    <div class="container">
+      <div class="navbar-header" style="padding: 0px;">
+        <a class="navbar-brand" href="/bookZone/" style="padding: 0px;">
+          <img src="{% static 'bookZone/Bookzonelogo.png' %}" style="height: 100%;width:100% " />
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/bookZone/">Home</a></li>
+        <li><a href="/bookZone/category">Categories</a></li>
+        <li><a href="/bookZone/authors">Authors</a></li>
+        <li><a href="/bookZone/book">Books</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      </ul>
+      </div>
+  </nav>
+  </header>
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+
+    <footer class="py-5 bg-dark" style="position: absolute;bottom: 0px;width: 100%">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;BookZone 2018</p>
+      </div>
+    </footer>
+    <script src="{% static 'bookZone/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'bookZone/wow.min.js' %}"></script>
+    <script src="{% static 'bookZone/main.js' %}"></script>
+  </body>
+</html>

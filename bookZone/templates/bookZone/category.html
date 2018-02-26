@@ -1,0 +1,41 @@
+{% extends 'bookZone/base.html' %}
+{% load static %}
+{% block title %} | Login{% endblock %}
+
+{% block content %}
+  <div class="row header-info">
+    <div class="col-sm-10 col-sm-offset-1 text-center">
+      {% if one == "one" %}
+				{% for c in categories %}
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100 thumbnail">
+            <a href="category/{{ c.id }}"><img class="card-img-top " src="{{ c.pic }}" alt=""></a>
+
+            <div class="card-body">
+              <h4>Title: {{ c.title }}</h4>
+              <p>Desciption: {{ c.desciption }}</p>
+              <h4 class="card-title">
+                {% if Category.isfav %}
+                <a href="nofav/{{ Category.id }}" class="btn btn-default">&#x2718; noFav</a>
+                {% else %}
+                  <a href="fav/{{ Category.id }}" class="btn btn-primary">&#x2714; Favorate</a>
+                {% endif %}
+                <a href="{{ c.id }}">{{ c.title }}</a>
+              </h4>
+              <p class="card-text">{{ c.desciption }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% elif one == "many" %}
+        {% for c in categories %}
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <img class="card-img-top " src="{{ c.pic }}" alt="">
+          <h4>{{ c.title }}</h4>
+          {% endfor %}
+        {% else %}
+				<li> No Categories Save yet</li>
+				{% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>BookZone | Welcome</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static 'bookZone/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'bookZone/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bookZone/main.css' %}">
+
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <a href="myindex.html"><img src="{% static 'bookZone/Bookzonelogo.png' %}" alt="Logo"></a>
+      </div>
+    </div>
+
+    <div class="row header-info">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <h1 class="wow fadeIn" style="visibility: visible; animation-name: fadeIn;">BookZone</h1>
+        <br />
+        <p class="lead wow fadeIn" data-wow-delay="0.5s">A Leading web BookStore</p>
+        <br />
+			<li>
+				<ul>
+					{% for b in books %}
+					<li><a href="/category/{{ b.id }}/">{{ b.title }}</a></li>
+          <li><a href="/category/{{ b.id }}/">{{ b.author_id }}</a></li>
+					<!-- <li><a href=m.id>{{ m }}</a></li> -->
+					{% empty %}
+					<li> No Movies in the List</li>
+					{% endfor %}
+				</ul>
+			</li>
+        
+       
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<script src="{% static 'bookZone/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'bookZone/wow.min.js' %}"></script>
+<script src="{% static 'bookZone/main.js' %}"></script>
+
+</body>
+</html>

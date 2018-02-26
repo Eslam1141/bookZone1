@@ -1,0 +1,54 @@
+{% extends 'bookZone/base.html' %}
+{% block title %} | Login{% endblock %}
+
+{% block content %}
+  <style type="text/css">
+    content, .row{
+      margin:0px !important;
+    }
+    header{
+      width: auto !important;
+      padding: 0px;
+      height: auto !important;
+      margin-bottom: 2%;
+    }
+    .img{
+      width:250px;
+      height: 250px;
+    }
+  </style>
+    
+    <div class="row text-center">
+        {% if one == "one" %}
+          {% for author in authors %}
+            <div class="col-sm-3 col-sm-offset-1 text-center">
+              <img class="img" src="{{ author.pic }}">
+              <h4><a>{{ author.name }}</a></h4>
+            </div>
+            <div class="col-sm-7 col-sm-offset-1 text-left">
+              <h4>Born in: {{ author.country }}</h4>
+              <p>Bio: {{ author.bio }}</p>
+              <h5>Born at: {{ author.born_at }}</h5>
+              <h5>Died at: {{ author.died_at }}</h5>
+              <h5>Number of followers: {{ author.users.all|length }}</h5>
+              {% if author.isFollowed%}
+                <a href="unfollow/{{ author.id }}" class="btn btn-default">&#x2718; Un Follow</a>
+              {% else %}
+                <a href="follow/{{ author.id }}" class="btn btn-primary">&#x2714; Follow</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% elif one == "many" %}
+          {% for author in authors %}
+          <a href="authors/{{ author.id }}">
+          <div class="col-sm-3 col-sm-offset-1 text-center">
+            <img class="img" src="{{ author.pic }}">
+            <h4>{{ author.name }}</h4>
+          </div>
+          </a>
+          {% endfor %}
+        {% else %}
+          <h2> No Authors to view</h2>
+        {% endif %}
+    </div>
+{% endblock %}
